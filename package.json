@@ -1,0 +1,20 @@
+{
+    "name": "Be-better-together",
+    "description": "A social media application",
+    "version": "1.0.0",
+    "main": "main.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://shwethaumashanker.github.io/Be-better-together.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://shwethaumashanker.github.io/Be-better-together/issues"
+    },
+    "homepage": "https://shwethaumashanker.github.io/Be-better-together/Login.html"
+  }
