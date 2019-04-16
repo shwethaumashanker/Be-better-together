@@ -5,13 +5,17 @@ const port=process.env.PORT || 1414
 	res.setHeader('Content-Type', 'text/html');
 	res.end('<h1>Hello World</h1>');
 	});*/
-var express = require('express')
-var app = express()
+const express = require('express');
+const app = express();
+const path = require('path');
+const router = express.Router();
 
 // respond with "hello world" when a GET request is made to the homepage
-app.get('/', function (req, res) {
-  res.send('hello world')
-})
+app.get('/',function(req,res){
+  res.sendFile(path.join(__dirname+'/login.html'));
+  //__dirname : It will resolve to your project folder.
+});
+
 app.listen(port,() => {
 	console.log(`Server running at port `+port);
 	});
