@@ -21,11 +21,18 @@ app.listen(port,() => {
 	});
 
 
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://khushi:<khushi>@be-better-together-wmrbk.mongodb.net/test?retryWrites=true";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
+
+const mongo = require('mongodb').MongoClient;
+const uri = "mongodb://khushi:khushi@be-better-together-wmrbk.mongodb.net/test?retryWrites=true";
+//const client = new MongoClient(uri, { useNewUrlParser: true });
+mongo.connect(uri, (err,client) => {
+  //const collection = client.db("test").collection("devices");
   // perform actions on the collection object
-  client.close();
+  //client.close();
+  if(err){
+  	console.error(err);
+  	return
+  }
 });
+
+
