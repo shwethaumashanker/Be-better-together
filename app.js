@@ -19,3 +19,11 @@ app.get('/',function(req,res){
 app.listen(port,() => {
 	console.log(`Server running at port `+port);
 	});
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://kadvani:<shwethasucks>@be-better-together-1dp0z.mongodb.net/test?retryWrites=true";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
