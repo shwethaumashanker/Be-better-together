@@ -12,8 +12,20 @@ const router = express.Router();
 
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/',function(req,res){
-  res.sendFile('/login.html');
+  res.sendFile(path.join(__dirname+'/login.html'));
   //__dirname : It will resolve to your project folder.
+});
+
+app.get('/main', function (req, res,html) {
+ res.sendFile(path.join(__dirname+'/main.html'));
+});
+
+app.get('/signup', function (req, res,html) {
+ res.sendFile(path.join(__dirname+'/signup.html'));
+});
+
+app.get('/logout', function (req, res,html) {
+ res.sendFile(path.join(__dirname+'/logout.html'));
 });
 
 app.listen(port,() => {
