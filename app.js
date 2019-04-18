@@ -20,19 +20,13 @@ app.listen(port,() => {
 	console.log(`Server running at port `+port);
 	});
 
-
-
-const mongo = require('mongodb').MongoClient;
-const uri = "mongodb://khushi:khushi@be-better-together-wmrbk.mongodb.net/test?retryWrites=true";
-//const client = new MongoClient(uri, { useNewUrlParser: true });
-mongo.connect(uri, (err,client) => {
-  //const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  //client.close();
-  if(err){
-  	console.error(err);
-  	return
-  }
-});
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb+srv://khushi:khushi@be-better-together-wmrbk.mongodb.net/test?retryWrites=true";
+MongoClient.connect(url, {useNewUrlParser: true},function(err,db) {
+  if (err) throw err;
+  console.log("Database created!");
+  db.close();
+}
+);
 
 
