@@ -31,3 +31,13 @@ app.get('/logout', function (req, res,html) {
 app.listen(port,() => {
 	console.log(`Server running at port `+port);
 	});
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb+srv://khushi:khushi@be-better-together-wmrbk.mongodb.net/test?retryWrites=true";
+MongoClient.connect(url, {useNewUrlParser: true},function(err,db) {
+  if (err) throw err;
+  console.log("Database created!");
+  db.close();
+}
+);
+
