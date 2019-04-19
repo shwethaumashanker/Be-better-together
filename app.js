@@ -37,7 +37,12 @@ var url = "mongodb+srv://khushi:khushi@be-better-together-wmrbk.mongodb.net/test
 MongoClient.connect(url, {useNewUrlParser: true},function(err,db) {
   if (err) throw err;
   console.log("Database created!");
-  db.close();
-}
-);
+  //db.close();
+  var dbo = db.db("mydb");
+  dbo.createCollection("customers", function(err,res){
+    if(err) throw err;
+    console.log("collection created");
+    db.close();
+  });
+});
 
