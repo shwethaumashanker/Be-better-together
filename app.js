@@ -10,6 +10,8 @@ const app = express();
 const path = require('path');
 const router = express.Router();
 
+app.use(express.static('public'));
+
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/',function(req,res){
   res.sendFile(path.join(__dirname+'/login.html'));
