@@ -33,7 +33,7 @@ app.get('/logout', function (req, res,html) {
 app.listen(port,() => {
 	console.log(`Server running at port `+port);
 	});
-
+/*
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://khushi:khushi@be-better-together-wmrbk.mongodb.net/test?retryWrites=true";
 MongoClient.connect(url, {useNewUrlParser: true},function(err,db) {
@@ -47,4 +47,23 @@ MongoClient.connect(url, {useNewUrlParser: true},function(err,db) {
     db.close();
   });
 });
+*/
 
+var mongoose = require('mongoose');
+var passport = require("passport");
+var bodyParser = require("body-parser");  
+var User = require("./models/user");
+var LocalStrategy = require("passport-local");
+var passportLocalMongoose = require("passport-local-mongoose");
+mongoose.connect('mongodb+srv://khushi:khushi@be-better-together-wmrbk.mongodb.net/test?retryWrites=true',{useNewUrlParser: true});
+var db = mongoose.connection;
+var userSchema = new mongoose.Schema({
+  name: String,
+  password: String
+});
+userSchema.plugin(passportLocalMongoose);
+module.exports = mongoose.model("User",userSchema);
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  // we're connected!
+});
