@@ -10,7 +10,7 @@ const app = express();
 const path = require('path');
 const router = express.Router();
 
-app.use(express.static('public'));
+
 
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/',function(req,res){
@@ -57,6 +57,7 @@ var mongoose = require("mongoose");
 var passport = require("passport");
 var bodyParser = require("body-parser");  
 var user = require("./models/user");
+var post = require("./models/post");
 var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
 mongoose.connect('mongodb+srv://khushi:khushi@be-better-together-wmrbk.mongodb.net/test?retryWrites=true',{useNewUrlParser: true},function(error){
@@ -68,11 +69,43 @@ console.log("Couldn't connect to database");
 });
   
 
-  
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static('public'));
 
-//app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
 
+app.post("/profile", (req, res) => {
+var myData = new post(req.body);
+ myData.save()
+ .then(item => {
+ res.send("item saved to database");
+ })
+ .catch(err => {
+ res.status(400).send("unable to save to database");
+ });
+});
+
+/*app.get("/profile", (req, res) => {
+    try {
+        var getposts = [];
+
+        post.find({}, 'title', function(err, post) {
+            .forEach(function(s) { 
+                console.log(s); console.log(s.name); 
+                getposts.push(s);
+            });
+        });
+        
+        /*Student.findById(req.params.id, function(err, student) {
+            res.render('pages/classPage', {
+                getposts: students
+            });
+        });
+    } catch(err) {
+        console.log(err);
+        res.render('./error');
+    }
+});*/
 /*var db = mongoose.connection;
 var userSchema = new mongoose.Schema({
   name: String,
