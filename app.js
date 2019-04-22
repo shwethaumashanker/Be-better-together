@@ -55,18 +55,20 @@ var bodyParser = require("body-parser");
 var user = require("./models/user");
 var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
-mongoose.connect('mongodb+srv://khushi:khushi@be-better-together-wmrbk.mongodb.net/test?retryWrites=true',{useMongoClient: true}
-(err,db) => {
-  if(err){
+mongoose.connect('mongodb+srv://khushi:khushi@be-better-together-wmrbk.mongodb.net/test?retryWrites=true',{useNewUrlParser: true},function(error){
+  if(error){
 console.log("Couldn't connect to database");
     } else {
       console.log("Connected To Database");
     }
+});
+  
 
-  }
-);
+  
+
 //app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+
 /*var db = mongoose.connection;
 var userSchema = new mongoose.Schema({
   name: String,
@@ -77,5 +79,5 @@ module.exports = mongoose.model("User",userSchema);
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   // we're connected!
-});
+});*/
 
