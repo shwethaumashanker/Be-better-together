@@ -49,24 +49,24 @@ MongoClient.connect(url, {useNewUrlParser: true},function(err,db) {
 });
 */
 
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 var passport = require("passport");
 var bodyParser = require("body-parser");  
-var user = require("./models/users");
-//var LocalStrategy = require("passport-local");
-//var passportLocalMongoose = require("passport-local-mongoose");
+var user = require("./models/user");
+var LocalStrategy = require("passport-local");
+var passportLocalMongoose = require("passport-local-mongoose");
 mongoose.connect('mongodb+srv://khushi:khushi@be-better-together-wmrbk.mongodb.net/test?retryWrites=true',{useMongoClient: true}
 (err,db) => {
   if(err){
 console.log("Couldn't connect to database");
     } else {
-      console.log(`Connected To Database`);
+      console.log("Connected To Database");
     }
 
   }
 );
-app.use(bodyParser.json());
-app.use(bodyParser.urlencode({extended:false}));
+//app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 /*var db = mongoose.connection;
 var userSchema = new mongoose.Schema({
   name: String,
