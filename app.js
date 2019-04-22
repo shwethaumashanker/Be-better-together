@@ -26,6 +26,10 @@ app.get('/signup', function (req, res,html) {
  res.sendFile(path.join(__dirname+'/signup.html'));
 });
 
+app.get('/profile', function (req, res,html) {
+ res.sendFile(path.join(__dirname+'/profile.html'));
+});
+
 app.get('/logout', function (req, res,html) {
  res.sendFile(path.join(__dirname+'/logout.html'));
 });
