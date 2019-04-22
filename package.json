@@ -19,6 +19,7 @@
   },
   "homepage": "https://shwethaumashanker.github.io/Be-better-together#readme",
   "dependencies": {
+    "node": "10.3.0",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
