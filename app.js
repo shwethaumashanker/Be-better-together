@@ -68,7 +68,9 @@ console.log("Couldn't connect to database");
     }
 });
   
-
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
@@ -84,7 +86,17 @@ var myData = new post(req.body);
  res.status(400).send("unable to save to database");
  });
 });
-
+app.post("/signup", (req, res) => {
+var myData = new user(req.body);
+ myData.save()
+ .then(item => {
+ //res.send("item saved to database");
+ res.sendFile(path.join(__dirname+'/main.html'));
+ })
+ .catch(err => {
+ res.status(400).send("unable to save to database");
+ });
+});
 /*app.get("/profile", (req, res) => {
     try {
         var getposts = [];
