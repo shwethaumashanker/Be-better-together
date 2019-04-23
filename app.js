@@ -58,8 +58,9 @@ var passport = require("passport");
 var bodyParser = require("body-parser");  
 var user = require("./models/user");
 var post = require("./models/post");
-var LocalStrategy = require("passport-local");
-var passportLocalMongoose = require("passport-local-mongoose");
+//var LocalStrategy = require("passport-local");
+//var passportLocalMongoose = require("passport-local-mongoose");
+var bcrypt = require("bcrypt");
 mongoose.connect('mongodb+srv://khushi:khushi@be-better-together-wmrbk.mongodb.net/test?retryWrites=true',{useNewUrlParser: true},function(error){
   if(error){
 console.log("Couldn't connect to database");
@@ -86,16 +87,40 @@ var myData = new post(req.body);
  res.status(400).send("unable to save to database");
  });
 });
+
 app.post("/signup", (req, res) => {
+let{fullname,email,password} =req.body;
+let userData ={
+  fullname,
+  email,
+  password
+};
 var myData = new user(req.body);
- myData.save()
+myData.save()
  .then(item => {
- //res.send("item saved to database");
- res.sendFile(path.join(__dirname+'/main.html'));
+ res.send("item saved to database");
  })
  .catch(err => {
  res.status(400).send("unable to save to database");
- });
+});
+});
+
+app.post("/signin",(req,res) =>{
+let{email,password} = req.body;
+user.findOne({email:email},'email password',(err,userData)=>{
+  if(!err){
+
+    if(password.equals(userData.password)==true){
+      res.sendFile(path.join(__dirname+'/main.html'));
+    }
+    else{
+      res.status(401).send(password+'incorrect password');
+    }
+  }
+  else{
+    res.status(401).send('invalid login credentials')
+  }
+  });
 });
 /*app.get("/profile", (req, res) => {
     try {
@@ -128,5 +153,4 @@ module.exports = mongoose.model("User",userSchema);
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   // we're connected!
-});*/
-
+*/
