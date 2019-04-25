@@ -11,7 +11,8 @@ const path = require('path');
 const router = express.Router();
 
 
-
+app.engine('.html', require('ejs').__express);
+app.set('view engine', 'ejs');
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/',function(req,res){
   res.sendFile(path.join(__dirname+'/login.html'));
