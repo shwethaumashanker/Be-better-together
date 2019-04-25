@@ -58,15 +58,15 @@ var passport = require("passport");
 var bodyParser = require("body-parser");  
 var user = require("./models/user");
 var post = require("./models/post");
-<<<<<<< HEAD
+
 //var multer = require('multer');
 //var fs = require('fs');
-=======
+
 const routes = require('./routes/GetPost');
 var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
 
->>>>>>> master
+
 //var LocalStrategy = require("passport-local");
 //var passportLocalMongoose = require("passport-local-mongoose");
 //var bcrypt = require("bcrypt");
