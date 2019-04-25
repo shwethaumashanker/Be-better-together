@@ -55,6 +55,14 @@
         </h1>
 
         <!-- Blog Post -->
+        <ul class="post">
+  <% for(var i=0; i<posts.length; i++) {%>
+    <li class="post">
+      <span><%= posts[i].title %></span>
+      <span><%= posts[i].img %></span>
+    </li>
+  <% } %>
+</ul>
         <div class="card mb-4">
           <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
           <div class="card-body">

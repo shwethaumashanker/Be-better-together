@@ -13,13 +13,15 @@ const router = express.Router();
 
 app.engine('.html', require('ejs').__express);
 app.set('view engine', 'ejs');
+app.set('views', './views');
+//res.render(view, locals);
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/',function(req,res){
-  res.sendFile(path.join(__dirname+'/login.html'));
+  res.sendFile(path.join(__dirname+'/views/login.html'));
   //__dirname : It will resolve to your project folder.
 });
 
-app.get('/main', function (req, res,html) {
+/*app.get('/main', function (req, res,html) {
   post.find({},function(err,posts){
   if(err){
     console.log(err);
@@ -29,20 +31,29 @@ app.get('/main', function (req, res,html) {
       console.log('List of posts',posts[i].title);
     }
   }
+});*/
+
+  app.get('/main', (req, res) => {
+    
+  post.find().toArray((err, result) => {
+    if (err) return console.log(err)
+    // renders index.ejs
+    res.render('main.html', {posts: result})
+  })
 });
- res.sendFile(path.join(__dirname+'/main.html'));
-});
+ /*res.sendFile(path.join(__dirname+'/views/main.html'));
+});*/
 
 app.get('/signup', function (req, res,html) {
- res.sendFile(path.join(__dirname+'/signup.html'));
+ res.sendFile(path.join(__dirname+'/views/signup.html'));
 });
 
 app.get('/profile', function (req, res,html) {
- res.sendFile(path.join(__dirname+'/profile.html'));
+ res.sendFile(path.join(__dirname+'/views/profile.html'));
 });
 
 app.get('/logout', function (req, res,html) {
- res.sendFile(path.join(__dirname+'/logout.html'));
+ res.sendFile(path.join(__dirname+'/views/logout.html'));
 });
 
 app.listen(port,() => {
@@ -102,7 +113,7 @@ app.post("/profile", (req, res) => {
 var myData = new post(req.body);
  myData.save()
  .then(item => {
- res.sendFile(path.join(__dirname+'/profile.html'));
+ res.sendFile(path.join(__dirname+'/views/profile.html'));
  })
  .catch(err => {
  res.status(400).send("unable to save to database");
@@ -120,7 +131,7 @@ var myData = new user(req.body);
 myData.save()
  .then(item => {
  //res.send("item saved to database");
-  res.sendFile(path.join(__dirname+'/main.html'));
+  res.sendFile(path.join(__dirname+'/views/main.html'));
  })
  .catch(err => {
  res.status(400).send("unable to save to database");
@@ -133,16 +144,16 @@ user.findOne({email:email},'email password',(err,userData)=>{
   if(!err){
     console.log(userData.password);
     if(password === userData.password){
-      res.sendFile(path.join(__dirname+'/main.html'));
+      res.sendFile(path.join(__dirname+'/views/main.html'));
     }
     else{
-      res.sendFile(path.join(__dirname+'/login.html'));
+      res.sendFile(path.join(__dirname+'/views/login.html'));
      // res.status(401).send(password+'incorrect password');
     }
   }
   else{
    //res.status(401).send('invalid login credentials')
-   res.sendFile(path.join(__dirname+'/login.html'));
+   res.sendFile(path.join(__dirname+'/views/login.html'));
   }
   });
 });
