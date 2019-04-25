@@ -99,7 +99,7 @@ var myData = new user(req.body);
 myData.save()
  .then(item => {
  //res.send("item saved to database");
- res.sendFile(path.join(__dirname+'/main.html'));
+  res.sendFile(path.join(__dirname+'/main.html'));
  })
  .catch(err => {
  res.status(400).send("unable to save to database");
@@ -110,8 +110,8 @@ app.post("/signin",(req,res) =>{
 let{email,password} = req.body;
 user.findOne({email:email},'email password',(err,userData)=>{
   if(!err){
-
-    if(password.equals(userData.password)==true){
+    console.log(userData.password);
+    if(password === userData.password){
       res.sendFile(path.join(__dirname+'/main.html'));
     }
     else{
