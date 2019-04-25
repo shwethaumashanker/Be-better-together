@@ -60,7 +60,7 @@ var user = require("./models/user");
 var post = require("./models/post");
 //var LocalStrategy = require("passport-local");
 //var passportLocalMongoose = require("passport-local-mongoose");
-var bcrypt = require("bcrypt");
+//var bcrypt = require("bcrypt");
 mongoose.connect('mongodb+srv://khushi:khushi@be-better-together-wmrbk.mongodb.net/test?retryWrites=true',{useNewUrlParser: true},function(error){
   if(error){
 console.log("Couldn't connect to database");
