@@ -3,6 +3,9 @@
   "description": "A social media application",
   "version": "1.0.0",
   "main": "app.js",
+  "engines": {
+    "node": "10.15.3"
+  },
   "scripts": {
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,7 +24,9 @@
   "dependencies": {
     "bcrypt": "^3.0.6",
     "express": "^4.16.4",
+    "fs": "0.0.1-security",
     "mongoose": "^5.5.3",
+    "multer": "^1.4.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^5.0.1"
