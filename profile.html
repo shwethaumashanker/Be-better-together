@@ -8,13 +8,14 @@
 	<title>Profile</title>
 	<link rel="stylesheet" type="text/css"   href="./css/main.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <script type="text/javascript">
 	function CreatePost() {
   document.getElementById("demo").innerHTML = "Hello World";
 }
 </script>
-<body>
+<body >
 	<!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
@@ -29,7 +30,7 @@
           </li>
           <li class="nav-item active">
             <!-- <a class="nav-link" href="#">Profile</a> -->
-            <a class="nav-link" href="/profile">Profile</a>
+            <a class="nav-link" href="/profile">Post</a>
           </li>
           <li class="nav-item">
             <!-- <a class="nav-link" href="#">Logout</a> -->
@@ -40,27 +41,33 @@
     </div>
   </nav>
 
-<div class="text-center"> 
-	<h1>Name</h1>
-	<h2>Name</h2>
-</div>
-
-
-		<div >
-            <div class="card-body">
-              <div class="text-center">
-              	<form method="post" action="/profile">
+<form>
+<br><br><br><br>
+</form>
+                
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Create Post</h5>
+            <div class="text-center">
+            <form method="post" action="/profile">
  <input type="text" name="title" placeholder="Title">
  <br><br>
   <input type="text" name="description" placeholder="description">
   <br><br>
    <input type="text" name="img" placeholder="Image URL">
    <br><br>
-   <input class="btn btn-primary button-width" type="submit" value="Create Post">
+   <input class="btn btn-primary button-width" type="submit" value="Upload">
   </form> 
-                
-              </div>
-            </div>
+</div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 </body>
+
