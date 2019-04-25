@@ -58,7 +58,8 @@ var passport = require("passport");
 var bodyParser = require("body-parser");  
 var user = require("./models/user");
 var post = require("./models/post");
-var multer = require('multer');
+//var multer = require('multer');
+//var fs = require('fs');
 //var LocalStrategy = require("passport-local");
 //var passportLocalMongoose = require("passport-local-mongoose");
 //var bcrypt = require("bcrypt");
@@ -126,6 +127,17 @@ user.findOne({email:email},'email password',(err,userData)=>{
   }
   });
 });
+/*app.use(multer({ dest: './uploads/',
+ rename: function (fieldname, filename) {
+   return filename;
+ },
+}));
+app.post("/profile",function(req,res){
+ var newItem = new Item();
+ newItem.img.data = fs.readFileSync(req.files.userPhoto.path)
+ newItem.img.contentType = 'image/png';
+ newItem.save();
+});*/
 /*app.get("/profile", (req, res) => {
     try {
         var getposts = [];
