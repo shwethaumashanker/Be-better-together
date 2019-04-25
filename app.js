@@ -19,6 +19,16 @@ app.get('/',function(req,res){
 });
 
 app.get('/main', function (req, res,html) {
+  post.find({},function(err,posts){
+  if(err){
+    console.log(err);
+  }
+  else{
+    for(var i in posts){
+      console.log('List of posts',posts[i].title);
+    }
+  }
+});
  res.sendFile(path.join(__dirname+'/main.html'));
 });
 
@@ -135,47 +145,18 @@ user.findOne({email:email},'email password',(err,userData)=>{
   }
   });
 });
-/*app.use(multer({ dest: './uploads/',
- rename: function (fieldname, filename) {
-   return filename;
- },
-}));
-app.post("/profile",function(req,res){
- var newItem = new Item();
- newItem.img.data = fs.readFileSync(req.files.userPhoto.path)
- newItem.img.contentType = 'image/png';
- newItem.save();
-});*/
-/*app.get("/profile", (req, res) => {
-    try {
-        var getposts = [];
 
-        post.find({}, 'title', function(err, post) {
-            .forEach(function(s) { 
-                console.log(s); console.log(s.name); 
-                getposts.push(s);
-            });
-        });
-        
-        /*Student.findById(req.params.id, function(err, student) {
-            res.render('pages/classPage', {
-                getposts: students
-            });
-        });
-    } catch(err) {
-        console.log(err);
-        res.render('./error');
+/*app.get('/main',function(req,res){
+post.find({},function(err,posts){
+  if(err){
+    console.log(err);
+  }
+  else{
+    for(var i in posts){
+      console.log('List of posts',posts[i].title);
     }
-});*/
-/*var db = mongoose.connection;
-var userSchema = new mongoose.Schema({
-  name: String,
-  password: String
+  }
 });
-userSchema.plugin(passportLocalMongoose);
-module.exports = mongoose.model("User",userSchema);
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  // we're connected!
-*/
+});*/
+
 
