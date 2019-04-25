@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let postSchema = new Schema({
+	//img:{data: Buffer, contentType:String}
 	title: {type: String, required: false},
 	description: {type: String, required: false},
 });

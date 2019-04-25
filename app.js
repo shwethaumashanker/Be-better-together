@@ -58,6 +58,7 @@ var passport = require("passport");
 var bodyParser = require("body-parser");  
 var user = require("./models/user");
 var post = require("./models/post");
+var multer = require('multer');
 //var LocalStrategy = require("passport-local");
 //var passportLocalMongoose = require("passport-local-mongoose");
 //var bcrypt = require("bcrypt");
@@ -120,7 +121,8 @@ user.findOne({email:email},'email password',(err,userData)=>{
     }
   }
   else{
-    res.status(401).send('invalid login credentials')
+   //res.status(401).send('invalid login credentials')
+   res.sendFile(path.join(__dirname+'/login.html'));
   }
   });
 });
