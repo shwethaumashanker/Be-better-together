@@ -7,6 +7,14 @@
 .image {
   min-height: 100vh;
 }
+.gra {
+    background: #007bff;
+  background: linear-gradient(to right, #0062E6, #33AEFF);
+}
+.navbar-expand-lg {
+    color: #495057;
+    background-color: #495057;
+}
 
 .bg-image {
   background-image: url('https://source.unsplash.com/WEQbe2jBg40/600x1200');
