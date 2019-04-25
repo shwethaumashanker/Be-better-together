@@ -58,6 +58,7 @@ var passport = require("passport");
 var bodyParser = require("body-parser");  
 var user = require("./models/user");
 var post = require("./models/post");
+const routes = require('./routes/GetPost');
 var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
 mongoose.connect('mongodb+srv://khushi:khushi@be-better-together-wmrbk.mongodb.net/test?retryWrites=true',{useNewUrlParser: true},function(error){
@@ -78,43 +79,14 @@ app.post("/profile", (req, res) => {
 var myData = new post(req.body);
  myData.save()
  .then(item => {
- res.send("item saved to database");
+ res.sendFile(path.join(__dirname+'/profile.html'));
  })
  .catch(err => {
  res.status(400).send("unable to save to database");
  });
 });
 
-/*app.get("/profile", (req, res) => {
-    try {
-        var getposts = [];
 
-        post.find({}, 'title', function(err, post) {
-            .forEach(function(s) { 
-                console.log(s); console.log(s.name); 
-                getposts.push(s);
-            });
-        });
-        
-        /*Student.findById(req.params.id, function(err, student) {
-            res.render('pages/classPage', {
-                getposts: students
-            });
-        });
-    } catch(err) {
-        console.log(err);
-        res.render('./error');
-    }
-});*/
-/*var db = mongoose.connection;
-var userSchema = new mongoose.Schema({
-  name: String,
-  password: String
-});
-userSchema.plugin(passportLocalMongoose);
-module.exports = mongoose.model("User",userSchema);
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  // we're connected!
-});*/
+
+
 
