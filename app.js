@@ -115,7 +115,8 @@ user.findOne({email:email},'email password',(err,userData)=>{
       res.sendFile(path.join(__dirname+'/main.html'));
     }
     else{
-      res.status(401).send(password+'incorrect password');
+      res.sendFile(path.join(__dirname+'/login.html'));
+     // res.status(401).send(password+'incorrect password');
     }
   }
   else{
