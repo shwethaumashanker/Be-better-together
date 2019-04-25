@@ -37,6 +37,10 @@ app.get('/signup', function (req, res,html) {
  res.sendFile(path.join(__dirname+'/signup.html'));
 });
 
+app.get('/Logo', function (req, res,html) {
+ res.sendFile(path.join(__dirname+'/Logo.png'));
+});
+
 app.get('/profile', function (req, res,html) {
  res.sendFile(path.join(__dirname+'/profile.html'));
 });
