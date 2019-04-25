@@ -98,7 +98,8 @@ let userData ={
 var myData = new user(req.body);
 myData.save()
  .then(item => {
- res.send("item saved to database");
+ //res.send("item saved to database");
+ res.sendFile(path.join(__dirname+'/main.html'));
  })
  .catch(err => {
  res.status(400).send("unable to save to database");
