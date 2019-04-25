@@ -58,11 +58,19 @@ var passport = require("passport");
 var bodyParser = require("body-parser");  
 var user = require("./models/user");
 var post = require("./models/post");
+<<<<<<< HEAD
 //var multer = require('multer');
 //var fs = require('fs');
+=======
+const routes = require('./routes/GetPost');
+var LocalStrategy = require("passport-local");
+var passportLocalMongoose = require("passport-local-mongoose");
+
+>>>>>>> master
 //var LocalStrategy = require("passport-local");
 //var passportLocalMongoose = require("passport-local-mongoose");
 //var bcrypt = require("bcrypt");
+
 mongoose.connect('mongodb+srv://khushi:khushi@be-better-together-wmrbk.mongodb.net/test?retryWrites=true',{useNewUrlParser: true},function(error){
   if(error){
 console.log("Couldn't connect to database");
@@ -83,7 +91,7 @@ app.post("/profile", (req, res) => {
 var myData = new post(req.body);
  myData.save()
  .then(item => {
- res.send("item saved to database");
+ res.sendFile(path.join(__dirname+'/profile.html'));
  })
  .catch(err => {
  res.status(400).send("unable to save to database");
@@ -170,3 +178,4 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   // we're connected!
 */
+
