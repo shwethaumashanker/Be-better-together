@@ -58,15 +58,14 @@ var passport = require("passport");
 var bodyParser = require("body-parser");  
 var user = require("./models/user");
 var post = require("./models/post");
-<<<<<<< HEAD
 const routes = require('./routes/GetPost');
 var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
-=======
+
 //var LocalStrategy = require("passport-local");
 //var passportLocalMongoose = require("passport-local-mongoose");
 //var bcrypt = require("bcrypt");
->>>>>>> master
+
 mongoose.connect('mongodb+srv://khushi:khushi@be-better-together-wmrbk.mongodb.net/test?retryWrites=true',{useNewUrlParser: true},function(error){
   if(error){
 console.log("Couldn't connect to database");
@@ -94,12 +93,6 @@ var myData = new post(req.body);
  });
 });
 
-<<<<<<< HEAD
-
-
-
-
-=======
 app.post("/signup", (req, res) => {
 let{fullname,email,password} =req.body;
 let userData ={
@@ -168,4 +161,4 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   // we're connected!
 */
->>>>>>> master
+
