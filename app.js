@@ -12,6 +12,9 @@ const router = express.Router();
 var expressHbs = require('express-handlebars');
 //var popupS = require('popups');
 
+
+//app.engine('.html', require('ejs').__express);
+//app.set('view engine', 'ejs');
 app.set('views','./views');
 app.engine('.hbs', expressHbs({extname:'.hbs'}));
 app.set('view engine', '.hbs');
@@ -40,6 +43,10 @@ app.get('/main', function (req, res,next) {
 
 app.get('/signup', function (req, res,html) {
  res.sendFile(path.join(__dirname+'/signup.html'));
+});
+
+app.get('/Logo', function (req, res,html) {
+ res.sendFile(path.join(__dirname+'/Logo.png'));
 });
 
 app.get('/profile', function (req, res,html) {
