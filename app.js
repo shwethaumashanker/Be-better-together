@@ -10,6 +10,7 @@ const app = express();
 const path = require('path');
 const router = express.Router();
 var expressHbs = require('express-handlebars');
+//var popupS = require('popups');
 
 app.set('views','./views');
 app.engine('.hbs', expressHbs({extname:'.hbs'}));
@@ -81,7 +82,7 @@ var post = require("./models/post");
 const routes = require('./routes/GetPost');
 var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
-
+//var popup = require('popups');
 
 //var LocalStrategy = require("passport-local");
 //var passportLocalMongoose = require("passport-local-mongoose");
@@ -128,7 +129,8 @@ myData.save()
   res.sendFile(path.join(__dirname+'/profile.html'));
  })
  .catch(err => {
- res.status(400).send("unable to save to database");
+ //res.status(400).send("unable to save to database");
+ res.sendFile(path.join(__dirname+'/login.html'));
 });
 });
 
@@ -141,6 +143,8 @@ user.findOne({email:email},'email password',(err,userData)=>{
       res.sendFile(path.join(__dirname+'/profile.html'));
     }
     else{
+      //window.alert('Incorrect password');
+     // popupS.alert({content: 'Incorrect password'});
       res.sendFile(path.join(__dirname+'/login.html'));
      // res.status(401).send(password+'incorrect password');
     }
