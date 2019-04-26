@@ -9,27 +9,41 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const router = express.Router();
+var expressHbs = require('express-handlebars');
 
 
+<<<<<<< HEAD
 app.engine('.html', require('ejs').__express);
 app.set('view engine', 'ejs');
 app.set('views', './views');
 //res.render(view, locals);
+=======
+//app.engine('.html', require('ejs').__express);
+//app.set('view engine', 'ejs');
+app.set('views','./views');
+app.engine('.hbs', expressHbs({extname:'.hbs'}));
+app.set('view engine', '.hbs');
+>>>>>>> master
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/',function(req,res){
   res.sendFile(path.join(__dirname+'/views/login.html'));
   //__dirname : It will resolve to your project folder.
 });
 
+<<<<<<< HEAD
 /*app.get('/main', function (req, res,html) {
+=======
+app.get('/main', function (req, res,next) {
+>>>>>>> master
   post.find({},function(err,posts){
   if(err){
     console.log(err);
   }
   else{
-    for(var i in posts){
-      console.log('List of posts',posts[i].title);
-    }
+   // for(var i in posts){
+      res.render('main',{ post : posts});
+      //console.log('List of posts',posts[i].title);
+    //}
   }
 });*/
 
@@ -41,11 +55,22 @@ app.get('/',function(req,res){
     res.render('main.html', {posts: result})
   })
 });
+<<<<<<< HEAD
  /*res.sendFile(path.join(__dirname+'/views/main.html'));
 });*/
+=======
+ //res.sendFile(path.join(__dirname+'/main.html'));
+
+
+});
+>>>>>>> master
 
 app.get('/signup', function (req, res,html) {
  res.sendFile(path.join(__dirname+'/views/signup.html'));
+});
+
+app.get('/Logo', function (req, res,html) {
+ res.sendFile(path.join(__dirname+'/Logo.png'));
 });
 
 app.get('/profile', function (req, res,html) {
@@ -59,6 +84,7 @@ app.get('/logout', function (req, res,html) {
 app.listen(port,() => {
 	console.log(`Server running at port `+port);
 	});
+
 /*
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://khushi:khushi@be-better-together-wmrbk.mongodb.net/test?retryWrites=true";
@@ -131,7 +157,11 @@ var myData = new user(req.body);
 myData.save()
  .then(item => {
  //res.send("item saved to database");
+<<<<<<< HEAD
   res.sendFile(path.join(__dirname+'/views/main.html'));
+=======
+  res.sendFile(path.join(__dirname+'/profile.html'));
+>>>>>>> master
  })
  .catch(err => {
  res.status(400).send("unable to save to database");
@@ -144,7 +174,11 @@ user.findOne({email:email},'email password',(err,userData)=>{
   if(!err){
     console.log(userData.password);
     if(password === userData.password){
+<<<<<<< HEAD
       res.sendFile(path.join(__dirname+'/views/main.html'));
+=======
+      res.sendFile(path.join(__dirname+'/profile.html'));
+>>>>>>> master
     }
     else{
       res.sendFile(path.join(__dirname+'/views/login.html'));
