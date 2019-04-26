@@ -11,15 +11,12 @@ const path = require('path');
 const router = express.Router();
 var expressHbs = require('express-handlebars');
 
-<<<<<<< HEAD
 
 //app.engine('.html', require('ejs').__express);
 //app.set('view engine', 'ejs');
-=======
 app.set('views','./views');
 app.engine('.hbs', expressHbs({extname:'.hbs'}));
 app.set('view engine', '.hbs');
->>>>>>> khushi2
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/',function(req,res){
   res.sendFile(path.join(__dirname+'/login.html'));
