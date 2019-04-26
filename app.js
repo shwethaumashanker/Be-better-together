@@ -143,9 +143,13 @@ myData.save()
 
 app.post("/signin",(req,res) =>{
 let{email,password} = req.body;
+try{
 user.findOne({email:email},'email password',(err,userData)=>{
   if(!err){
-    console.log(userData.password);
+    if(userData == null){
+      return res.sendFile(path.join(__dirname+'/login.html'));
+    }
+    //console.log(userData.password);
     if(password === userData.password){
       res.sendFile(path.join(__dirname+'/profile.html'));
     }
@@ -161,6 +165,10 @@ user.findOne({email:email},'email password',(err,userData)=>{
    res.sendFile(path.join(__dirname+'/login.html'));
   }
   });
+}
+catch(error){
+  res.sendFile(path.join(__dirname+'/login.html'));
+};
 });
 
 /*app.get('/main',function(req,res){
